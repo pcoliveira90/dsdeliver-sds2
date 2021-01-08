@@ -1,9 +1,13 @@
+import './styles.css'
 import Footer from "../Footer";
-import Navbar from "../Navbar";
+import StepsHeader from "./StepsHeader";
 
 function Orders(){
     return (
         <>
+        <div className="orders-container">
+            <StepsHeader/>
+        </div>
         <Footer />
         </>
     );
