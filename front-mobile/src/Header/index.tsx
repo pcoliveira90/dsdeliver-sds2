@@ -3,14 +3,16 @@ import {StyleSheet, Text, View, Image} from 'react-native';
 
 function Header(){
     return (
-        <View 
-            style={styles.container}>
-                <Image source={require('../assets/logo.png')}/>
-                <Text
-                    style={styles.text}>
-                        DS Delivery
-                </Text>
-        </View>
+        <>
+            <View 
+                style={styles.container}>
+                    <Image source={require('../assets/logo.png')}/>
+                    <Text
+                        style={styles.text}>
+                            DS Delivery
+                    </Text>
+            </View>
+        </>
     );
 }
 
