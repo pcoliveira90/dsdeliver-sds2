@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { OrderLocationData, Product } from './types';
 import { fetchProducts } from '../api';
 import OrderLocation from './OrderLocation';
+import OrderSummary from './OrderSummary';
 
 function Orders(){
 
@@ -26,6 +27,7 @@ function Orders(){
             <StepsHeader/>
             <ProductsList products={products} />
             <OrderLocation onChangeLocation={location => setOrderLocation(location)} />
+            <OrderSummary />
         </div>
         <Footer />
         </>
