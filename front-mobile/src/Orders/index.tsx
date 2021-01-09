@@ -1,27 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import {StyleSheet,  ScrollView, Alert,ActivityIndicator,View} from 'react-native';
-import Reader from '../Header';
+import Header from '../Header';
 import OrderCard from '../OrderCard';
-import fetchOrders from '../api'
+import {fetchOrders} from '../api'
 import { Order } from '../types';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 
 function Orders(){
 
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
-  useEffect (()=>{
+  const handleOnPress = (order : Order)=>{
+    navigation.navigate('OrderDetails', {order});
+  }
+  const fetchData= ()=>{
     setIsLoading(true);
     fetchOrders()
       .then(response => setOrders(response.data))
       .catch(error => Alert.alert("Ocorreu um erro insperado ao buscar os pedidos!"))
-      .finally(()=> setIsLoading(false))
-  },[])
+      .finally(()=> setIsLoading(false));
+  }
+  useEffect (()=>{
+    if(isFocused){
+      fetchData();
+    }    
+  },[isFocused])
 
     return (
     <>
-      <Reader/>
+      <Header/>
       <ScrollView style={styles.container}>
           {
             isLoading ? 
@@ -31,8 +42,10 @@ function Orders(){
               </View>
             ) :
             ( orders.map(order =>
-              <TouchableWithoutFeedback key={order.id}>
-                <OrderCard order={order}/>
+              <TouchableWithoutFeedback 
+                key={order.id}
+                onPress={()=> {handleOnPress(order)}}>
+                  <OrderCard order={order}/>
               </TouchableWithoutFeedback>)
             )
           }
