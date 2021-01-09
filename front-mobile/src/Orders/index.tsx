@@ -1,18 +1,24 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet,  ScrollView} from 'react-native';
 import Reader from '../Header';
+import OrderCard from '../OrderCard';
 
 function Orders(){
     return (
     <>
       <Reader/>
-      <View>
-          <Text>XXX</Text>
-      </View>
+      <ScrollView style={styles.container}>
+          <OrderCard/>
+      </ScrollView>
     </>     
     );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container:{
+    paddingRight:'5%',
+    paddingLeft: '5%'
+  }
+})
 
 export default Orders;
