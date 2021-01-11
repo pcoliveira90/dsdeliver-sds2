@@ -21,3 +21,4 @@ Link: https://deliverysds2.netlify.app/
 
 # Mobile
  
+ <img src="https://raw.githubusercontent.com/pcoliveira90/dsdeliver-sds2/main/img/dsdelivery_mobile.gif" alt="Pedido em andamento" style="max-width:100%;">
